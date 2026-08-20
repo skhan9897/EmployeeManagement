@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">Employee Management</div>
+
+    <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#employees">Employees</a>
+        <a href="#addEmployee">Add Employee</a>
+    </nav>
+</header>
+
+<section class="hero" id="dashboard">
+
+    <div>
+        <h1>Employee Management System</h1>
+
+        <p>
+            Manage employees, departments, salaries and contact
+            information from one place.
+        </p>
+
+        <button onclick="showAddForm()">
+            + Add Employee
+        </button>
+    </div>
+
+</section>
+
+<section class="container">
+
+    <div class="stats">
+
+        <div class="card">
+            <h3>Total Employees</h3>
+            <p id="totalEmployees">0</p>
+        </div>
+
+        <div class="card">
+            <h3>IT Department</h3>
+            <p id="itEmployees">0</p>
+        </div>
+
+        <div class="card">
+            <h3>HR Department</h3>
+            <p id="hrEmployees">0</p>
+        </div>
+
+    </div>
+
+    <!-- Add Employee -->
+
+    <div class="form-container" id="addEmployee">
+
+        <h2>Add Employee</h2>
+
+        <form id="employeeForm">
+
+            <input
+                    type="text"
+                    id="name"
+                    placeholder="Employee Name"
+                    required>
+
+            <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    required>
+
+            <input
+                    type="text"
+                    id="phone"
+                    placeholder="Phone Number"
+                    required>
+
+            <input
+                    type="text"
+                    id="department"
+                    placeholder="Department"
+                    required>
+
+            <input
+                    type="number"
+                    id="salary"
+                    placeholder="Salary"
+                    required>
+
+            <button type="submit">
+                Save Employee
+            </button>
+
+            <button
+                    type="button"
+                    class="cancel"
+                    onclick="hideForm()">
+                Cancel
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- Employee List -->
+
+    <div class="employee-section" id="employees">
+
+        <div class="section-header">
+
+            <h2>Employees</h2>
+
+            <button onclick="loadEmployees()">
+                Refresh
+            </button>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+                <tbody id="employeeTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Employee Management System</p>
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

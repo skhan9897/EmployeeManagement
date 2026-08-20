@@ -16,26 +16,27 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    // Create Employee
+    // CREATE
     public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
 
-    // Get All Employees
+    // GET ALL
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
-    // Get Employee By ID
+    // GET BY ID
     public Optional<Employee> getEmployeeById(Long id) {
         return employeeRepository.findById(id);
     }
 
-    // Update Employee
+    // UPDATE
     public Employee updateEmployee(Long id, Employee employee) {
 
         Employee existingEmployee = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found"));
+                .orElseThrow(() ->
+                        new RuntimeException("Employee not found with id: " + id));
 
         existingEmployee.setName(employee.getName());
         existingEmployee.setEmail(employee.getEmail());
@@ -46,8 +47,13 @@ public class EmployeeService {
         return employeeRepository.save(existingEmployee);
     }
 
-    // Delete Employee
+    // DELETE
     public void deleteEmployee(Long id) {
+        if (!employeeRepository.existsById(id)) {
+            throw new RuntimeException(
+                    "Employee not found with id: " + id);
+        }
+
         employeeRepository.deleteById(id);
     }
 }
